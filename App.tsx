@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { PaperProvider } from 'react-native-paper';
+import { NavigationContainer } from './src/navigation/NavigationContainer';
+import { useFontsHelper } from '@hooks';
 
-export default function App() {
+import { StatusBar } from 'expo-status-bar';
+
+function App() {
+  const { appIsReady } = useFontsHelper();
+
+  if (!appIsReady) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <>
+      <PaperProvider>
       <StatusBar style="auto" />
-    </View>
+        <NavigationContainer />
+      </PaperProvider>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
