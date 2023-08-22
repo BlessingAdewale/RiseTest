@@ -20,8 +20,8 @@ export type AuthStackParamList = {
 
 export type MainBottomTabParamList = {
   Home: undefined;
-  Activities: undefined;
-  Beneficiary: undefined;
-  Settings: undefined;
-  ReferAFriend: undefined;
+  Account: undefined;
+  Feed: undefined;
+  Wallet: undefined;
+  Plans: undefined;
 };

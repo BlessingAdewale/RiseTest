@@ -1,6 +1,18 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MainBottomTabParamList } from './types';
+import { theme } from '@constants';
+import { layout } from '@utils';
+import { Account, Feed, Home, Plans, Wallet } from '@screens';
+
+//SVGs
+
+import HomeIcon from '@assets/svg/homerise.svg';
+import PlansIcon from '@assets/svg/plansrise.svg';
+import WalletIcon from '@assets/svg/walletrise.svg';
+// import AccountIcon from '@assets/svg/accountrise.svg';
+import FeedIcon from '@assets/svg/feedrise.svg';
+
 
 const MainBottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 export const MainBottomTabNavigator = ()=> {
@@ -20,7 +32,7 @@ export const MainBottomTabNavigator = ()=> {
             height: layout.heightPixel(90),
           },
           tabBarLabelStyle: {
-            fontFamily: 'Poppins_500Medium',
+            // fontFamily: 'Poppins_500Medium',
             fontSize: layout.fontPixel(12),
             color: theme.colors.secondary,
           },
@@ -32,49 +44,43 @@ export const MainBottomTabNavigator = ()=> {
       >
         <MainBottomTab.Screen
           name="Home"
-          component={Activities}
+          component={Home}
           options={{
-            tabBarIcon: ({ focused, color }) => (
-
-            ),
+            tabBarIcon: ({ focused, color }) => focused? <HomeIcon /> : <HomeIcon />
           }}
         />
         <MainBottomTab.Screen
           name="Plans"
-          component={Beneficiary}
+          component={Plans}
           options={{
-            tabBarIcon: ({ focused, color }) => (
-
-            ),
+            tabBarIcon: ({ focused, color }) => 
+            focused? <PlansIcon /> : <PlansIcon />
           }}
         />
 
         <MainBottomTab.Screen
           name="Wallet"
-          component={Home}
+          component={Wallet}
           options={{
-            tabBarIcon: ({ focused, color }) => (
-       
-            ),
+            tabBarIcon: ({ focused, color }) => 
+            focused? <WalletIcon /> : <WalletIcon />
           }}
         />
         <MainBottomTab.Screen
           name="Feed"
-          component={ReferAFriend}
+          component={Feed}
           options={{
-            tabBarIcon: ({ focused, color }) => (
-        
-            ),
+            tabBarIcon: ({ focused, color }) => 
+            focused? <FeedIcon /> : <FeedIcon />
           }}
         />
         <MainBottomTab.Screen
           name="Account"
-          component={Settings}
-          options={{
-            tabBarIcon: ({ focused, color }) => (
-
-            ),
-          }}
+          component={Account}
+        //   options={{
+        //     tabBarIcon: ({ focused, color }) => 
+        //     focused? <AccountIcon /> : <AccountIcon />
+        //   }}
         />
       </MainBottomTab.Navigator>
 
