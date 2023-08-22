@@ -11,6 +11,7 @@ export const theme = {
     instructiveRed: '#EB5757',
     instructiveGreen: '#27BF41',
     text: '#FFFFFF',
+    textInputText: '#292F33',
     textSoft: '#71879C',
     neutral: '#FFFFFF',
     white:'#FFFFFF',

@@ -13,6 +13,9 @@ import WalletIcon from '@assets/svg/walletrise.svg';
 // import AccountIcon from '@assets/svg/accountrise.svg';
 import FeedIcon from '@assets/svg/feedrise.svg';
 
+import CircleIcon from '@assets/svg/circle.svg'
+import { StyleSheet, Text } from 'react-native';
+
 
 const MainBottomTab = createBottomTabNavigator<MainBottomTabParamList>();
 export const MainBottomTabNavigator = ()=> {
@@ -34,7 +37,7 @@ export const MainBottomTabNavigator = ()=> {
           tabBarLabelStyle: {
             // fontFamily: 'Poppins_500Medium',
             fontSize: layout.fontPixel(12),
-            color: theme.colors.secondary,
+            color: theme.colors.text004,
           },
           tabBarItemStyle: {
             marginBottom: layout.pixelSizeVertical(20),
@@ -46,7 +49,8 @@ export const MainBottomTabNavigator = ()=> {
           name="Home"
           component={Home}
           options={{
-            tabBarIcon: ({ focused, color }) => focused? <HomeIcon /> : <HomeIcon />
+            tabBarIcon: ({ focused, color }) => focused? <HomeIcon /> : <HomeIcon />,
+            tabBarLabel: ({focused, color}) => focused? <CircleIcon /> : <Text style={styles.tabBarLabel} >Home</Text>
           }}
         />
         <MainBottomTab.Screen
@@ -54,7 +58,8 @@ export const MainBottomTabNavigator = ()=> {
           component={Plans}
           options={{
             tabBarIcon: ({ focused, color }) => 
-            focused? <PlansIcon /> : <PlansIcon />
+            focused? <PlansIcon /> : <PlansIcon />,
+            tabBarLabel: ({focused, color}) => focused? <CircleIcon /> : <Text style={styles.tabBarLabel}  >Plans</Text>
           }}
         />
 
@@ -63,7 +68,8 @@ export const MainBottomTabNavigator = ()=> {
           component={Wallet}
           options={{
             tabBarIcon: ({ focused, color }) => 
-            focused? <WalletIcon /> : <WalletIcon />
+            focused? <WalletIcon /> : <WalletIcon />,
+            tabBarLabel: ({focused, color}) => focused? <CircleIcon /> : <Text  style={styles.tabBarLabel} >Wallet</Text>
           }}
         />
         <MainBottomTab.Screen
@@ -71,7 +77,8 @@ export const MainBottomTabNavigator = ()=> {
           component={Feed}
           options={{
             tabBarIcon: ({ focused, color }) => 
-            focused? <FeedIcon /> : <FeedIcon />
+            focused? <FeedIcon /> : <FeedIcon />,
+            tabBarLabel: ({focused, color}) => focused? <CircleIcon /> : <Text style={styles.tabBarLabel} >Feed</Text>
           }}
         />
         <MainBottomTab.Screen
@@ -79,10 +86,19 @@ export const MainBottomTabNavigator = ()=> {
           component={Account}
         //   options={{
         //     tabBarIcon: ({ focused, color }) => 
-        //     focused? <AccountIcon /> : <AccountIcon />
+        //     focused? <AccountIcon /> : <AccountIcon />,
+        //  tabBarLabel: ({focused, color}) => focused? <CircleIcon /> : null
         //   }}
         />
       </MainBottomTab.Navigator>
 
     )
 }
+
+
+const styles = StyleSheet.create({
+  tabBarLabel:{
+    fontSize: layout.fontPixel(12),
+    color: theme.colors.text004,
+  }
+})
