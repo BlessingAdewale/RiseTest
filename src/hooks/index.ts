@@ -1,1 +1,1 @@
-export * from './useFontsHelper'
+export * from './useFontsHelper';

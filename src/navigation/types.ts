@@ -3,19 +3,26 @@ import { RouteProp } from '@react-navigation/native';
 
 export type RootStackParamList = {
   HomeStack: undefined;
-  AddPaymentMethod: undefined;
-  DeclineStatus: undefined;
-  DeclineThisRequest: undefined;
-  PaymentStatus: undefined;
-  RequestDetails: undefined
+  CreateAPlan: undefined;
+  DoneCreatingPlan: undefined;
+  GoalName: undefined;
+  Review: undefined;
+  TargetAmount: undefined;
+  TargetDate: undefined;
+  ViewPlan: undefined;
+  ChooseFromPlans: undefined;
+  FundWallet: undefined;
+  SelectBank: undefined;
 };
 export type AuthStackParamList = {
-  HomeStack: undefined;
-  AddPaymentMethod: undefined;
-  DeclineStatus: undefined;
-  DeclineThisRequest: undefined;
-  PaymentStatus: undefined;
-  RequestDetails: undefined
+  Onboarding: undefined;
+  CreateAnAccount: undefined;
+  DoneRegistering: undefined;
+  TellUsMoreAboutYou: undefined;
+  ConfirmPin: undefined;
+  CreatePin: undefined;
+  DoneCreatingPin: undefined;
+  SignIn: undefined;
 };
 
 export type MainBottomTabParamList = {

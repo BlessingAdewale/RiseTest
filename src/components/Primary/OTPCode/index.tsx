@@ -14,10 +14,7 @@ import { theme } from '@constants';
 
 const CELL_COUNT = 6;
 
-
-
-export function OTPCode({value, setValue}: any) {
-  
+export function OTPCode({ value, setValue }: any) {
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,

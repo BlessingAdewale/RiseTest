@@ -1,9 +1,11 @@
-// const userImage = require('../assets/images/userProfile.png') as number;
-// const personIcon = require('../assets/images/personIcon.png') as number;
-// const iconBlock = require('../assets/images/iconBlock.png') as number;
+const userImage = require('../assets/images/userImage.jpeg') as number;
+const firstSlideImage = require('../assets/images/firstSlideImage.png') as number;
+const secondSlideImage = require('../assets/images/secondSlideImage.png') as number;
+const thirdSlideImage = require('../assets/images/thirdSlideImage.png') as number;
 
 export default {
-//   userImage,
-//   personIcon,
-//   iconBlock
+  userImage,
+  firstSlideImage,
+  secondSlideImage,
+  thirdSlideImage,
 };

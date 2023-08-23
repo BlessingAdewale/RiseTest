@@ -14,10 +14,13 @@ export const theme = {
     textInputText: '#292F33',
     textSoft: '#71879C',
     neutral: '#FFFFFF',
-    white:'#FFFFFF',
+    white: '#FFFFFF',
+    background: '#FFF',
     black: '#222222',
     indigo: '#B80074',
     orange: '#FE7122',
-    text004: '#94A1AD'
+    text004: '#94A1AD',
+    textBlock: '#222',
+    grey1: '#333'
   },
 };

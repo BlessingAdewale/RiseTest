@@ -1,12 +1,10 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 export const Wallet = () => {
-    return (
-        <View>
-            <Text></Text>
-        </View>
-    )
-}
-
-
+  return (
+    <View>
+      <Text></Text>
+    </View>
+  );
+};
