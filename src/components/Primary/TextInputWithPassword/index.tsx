@@ -28,8 +28,8 @@ export const TextInputWithPassword = ({ ...props }: any) => {
       theme={{ colors: { background: theme.colors.background } }}
       right={
         <Input.Icon
-          icon={showPassword ? 'eye-outline' : 'eye-off-outline'}
-          size={16.67}
+          icon={showPassword ? 'eye' : 'eye-off'}
+          size={23.67}
           color={(isTextInputFocused: boolean) =>
             isTextInputFocused ? theme.colors.teal1 : '#7A7A7A'
           }
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     // fontWeight:'normal',
     // fontFamily: 'Poppins_400Regular',
     color: theme.colors.textInputText,
-    backgroundColor: theme.colors.background
+    backgroundColor: theme.colors.background,
   },
   outline: {
     borderRadius: layout.fontPixel(5),

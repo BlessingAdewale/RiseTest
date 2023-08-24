@@ -49,22 +49,25 @@ export const TellUsMoreAboutYou = () => {
               <TextInput
                 label="Legal First Name"
                 value={values.firstname}
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
+                onChangeText={handleChange('firstname')}
+                onBlur={handleBlur('firstname')}
+                style={styles.firstname}
               />
 
               <TextInput
                 label="Legal Last Name"
                 value={values.lastname}
-                onChangeText={handleChange('name')}
-                onBlur={handleBlur('name')}
+                onChangeText={handleChange('lastname')}
+                onBlur={handleBlur('lastname')}
+                style={styles.lastname}
               />
 
               <TextInput
                 label="Nick Name"
                 value={values.nickname}
-                onChangeText={handleChange('name')}
-                onBlur={handleBlur('name')}
+                onChangeText={handleChange('nickname')}
+                onBlur={handleBlur('nickname')}
+                style={styles.nickname}
               />
 
               <TextInputWithPhoneNumber
@@ -72,12 +75,13 @@ export const TellUsMoreAboutYou = () => {
                 value={values.phoneNumber}
                 onChangeText={handleChange('phoneNumber')}
                 onBlur={handleBlur('phoneNumber')}
+                style={styles.phoneNumber}
               />
               <TextInputWithCalendar
-                label="DateOfBirth"
+                label="Date Of Birth"
                 value={values.dateofbirth}
-                onChangeText={handleChange('phoneNumber')}
-                onBlur={handleBlur('phoneNumber')}
+                onChangeText={handleChange('dateofbirth')}
+                onBlur={handleBlur('dateofbirth')}
               />
             </TouchableWithoutFeedback>
 
@@ -87,6 +91,7 @@ export const TellUsMoreAboutYou = () => {
                 children="Continue"
                 loading={loading}
                 onPress={handleSubmit}
+                style={styles.button}
               />
             </TouchableWithoutFeedback>
           </>
@@ -96,8 +101,15 @@ export const TellUsMoreAboutYou = () => {
       <View style={styles.bottomText}>
         <Text>
           By clicking Continue, you agree to our
-          <Text style={styles.colouredBottomText}>Terms of Service</Text> and
-          <Text style={styles.colouredBottomText}>Privacy Policy.</Text>
+          <Text style={styles.colouredBottomText} onPress={() => null}>
+            {' '}
+            Terms of Service
+          </Text>{' '}
+          and
+          <Text style={styles.colouredBottomText} onPress={() => null}>
+            {' '}
+            Privacy Policy.
+          </Text>
         </Text>
       </View>
     </SafeAreaView>
@@ -111,12 +123,31 @@ const styles = StyleSheet.create({
     color: theme.colors.darkText,
     fontSize: layout.fontPixel(12),
     fontFamily: 'DMSans_400Regular',
-    textAlign: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 55,
+  },
+  button: {
+    marginTop: layout.pixelSizeVertical(12),
   },
   colouredBottomText: {
     color: theme.colors.teal1,
     fontSize: layout.fontPixel(12),
     fontFamily: 'DMSans_400Regular',
     textAlign: 'center',
+  },
+  firstname: {
+    marginTop: layout.pixelSizeVertical(27),
+    marginBottom: layout.pixelSizeVertical(18),
+  },
+  lastname: {
+    marginBottom: layout.pixelSizeVertical(18),
+  },
+  nickname: {
+    marginBottom: layout.pixelSizeVertical(18),
+  },
+  phoneNumber: {
+    marginBottom: layout.pixelSizeVertical(18),
   },
 });

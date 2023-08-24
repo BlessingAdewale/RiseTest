@@ -5,12 +5,9 @@ import { globalStyles } from '@globalStyles';
 import { OnboardingItem, Pagination } from '@components';
 
 export const Onboarding = () => {
-
-
-const handleOnViewableItemsChanged= useRef (({viewableItems}: any)=> {
-console.log ('viewableItems', viewableItems)
-}).current
-
+  const handleOnViewableItemsChanged = useRef(({ viewableItems }: any) => {
+    console.log('viewableItems', viewableItems);
+  }).current;
 
   const scrollX = useRef(new Animated.Value(0)).current;
   const handleOnScroll = (event: any) => {

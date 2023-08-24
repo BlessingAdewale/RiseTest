@@ -18,7 +18,7 @@ export const TextInputWithPhoneNumber = ({ left, right, ...props }: any) => {
       label={styles.label}
       onFocus={() => null}
       left={left}
-         theme={{ colors: { background: theme.colors.background } }}
+      theme={{ colors: { background: theme.colors.background } }}
       right={right}
       contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(44) }}
       mode="outlined"

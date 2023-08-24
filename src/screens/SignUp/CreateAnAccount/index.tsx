@@ -6,7 +6,8 @@ import { Formik } from 'formik';
 import { useSchemaHelper } from '@constants';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { layout } from '@utils';
-
+import Checked from '@assets/svg/check.svg';
+import Unchecked from '@assets/svg/uncheck.svg';
 
 interface ValuesType {
   email: string;
@@ -49,7 +50,19 @@ investment portfolio"
                 value={values.password}
                 style={styles.passwordTextinput}
               />
-              {errors.password && touched.password && <Text>{errors.password}</Text>}
+
+              <View style={[globalStyles.rowStart]}>
+                {errors.password && touched.password ? <Checked /> : <Unchecked />}
+                <Text style={styles.aboveButtonText}>Minimum of 8 characters</Text>
+              </View>
+              <View style={[globalStyles.rowStart]}>
+                {errors.password && touched.password ? <Checked /> : <Unchecked />}
+                <Text style={styles.aboveButtonText2}>One UPPERCASE character</Text>
+              </View>
+              <View style={[globalStyles.rowStart]}>
+                {errors.password && touched.password ? <Checked /> : <Unchecked />}
+                <Text style={styles.aboveButtonText}>One unique character (e.g: !@#$%^&*?)</Text>
+              </View>
             </TouchableWithoutFeedback>
 
             <TouchableWithoutFeedback onPress={() => null}>
@@ -70,9 +83,24 @@ investment portfolio"
 
 const styles = StyleSheet.create({
   textInput: {
-    marginTop: layout.pixelSizeVertical(38)
+    marginTop: layout.pixelSizeVertical(38),
   },
-  passwordTextinput:{
-    marginTop: layout.pixelSizeVertical(17)
-  }
+  passwordTextinput: {
+    marginTop: layout.pixelSizeVertical(17),
+    marginBottom: layout.pixelSizeVertical(17),
+  },
+
+  aboveButtonText: {
+    color: '#000',
+    fontSize: layout.fontPixel(13),
+    fontFamily: 'DMSans_400Regular',
+    paddingLeft: layout.pixelSizeHorizontal(8),
+  },
+  aboveButtonText2: {
+    color: '#000',
+    fontSize: layout.fontPixel(13),
+    fontFamily: 'DMSans_400Regular',
+    marginVertical: layout.pixelSizeVertical(12),
+    paddingLeft: layout.pixelSizeHorizontal(8),
+  },
 });

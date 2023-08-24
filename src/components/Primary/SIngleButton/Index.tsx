@@ -7,7 +7,7 @@ import { Button as PaperButton } from 'react-native-paper';
 export const SingleButton = ({ mode, style, errorText, setErrorText, ...props }: any) => {
   return (
     <PaperButton
-      style={[styles.button, mode === 'outlined']}
+      style={[styles.button, style, mode === 'outlined']}
       labelStyle={styles.text}
       mode={mode}
       buttonColor={theme.colors.teal1}

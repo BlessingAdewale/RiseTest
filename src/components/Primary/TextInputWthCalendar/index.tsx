@@ -13,19 +13,19 @@ export const TextInputWithCalendar = ({ ...props }: any) => {
       selectionColor={theme.colors.teal1}
       // cursorColor={theme.colors.teal1}
       height={layout.heightPixel(55)}
-      editable={false}
+      // editable={false}
       outlineColor="#D2D8D5"
       fontSize={layout.fontPixel(15)}
       label={styles.label}
       placeholder="Choose date"
       onFocus={() => null}
-         theme={{ colors: { background: theme.colors.background } }}
+      theme={{ colors: { background: theme.colors.background } }}
       contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(44) }}
       mode="outlined"
       right={
         <Input.Icon
-          icon={'calendar'}
-          size={16.67}
+          icon={'calendar-month'}
+          size={23.67}
           color={(isTextInputFocused: boolean) =>
             isTextInputFocused ? theme.colors.teal1 : '#7A7A7A'
           }
