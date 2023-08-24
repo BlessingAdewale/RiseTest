@@ -95,7 +95,7 @@ export const MainBottomTabNavigator = () => {
             focused ? (
               <WalletIcon width={layout.widthPixel(22)} height={layout.heightPixel(22)} />
             ) : (
-              <WalletIcon width={layout.widthPixel(22)} height={layout.heightPixel(22)}  />
+              <WalletIcon width={layout.widthPixel(22)} height={layout.heightPixel(22)} />
             ),
           tabBarLabel: ({ focused, color }) =>
             focused ? (
@@ -133,9 +133,13 @@ export const MainBottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ focused, color }) =>
             focused ? (
-              <Avatar.Image size={30} source={images.userImage}  />
+              <Avatar.Image size={30} source={images.userImage} />
             ) : (
-              <Avatar.Image size={30} source={images.userImage}  theme={{ colors: { primary: theme.colors.teal1 } }}  />
+              <Avatar.Image
+                size={30}
+                source={images.userImage}
+                theme={{ colors: { primary: theme.colors.teal1 } }}
+              />
             ),
           tabBarLabel: ({ focused, color }) =>
             focused ? (

@@ -21,6 +21,7 @@ export const theme = {
     orange: '#FE7122',
     text004: '#94A1AD',
     textBlock: '#222',
-    grey1: '#333'
+    grey1: '#333',
+    darkText: '#012224',
   },
 };

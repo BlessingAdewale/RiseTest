@@ -19,7 +19,8 @@ export const TextInputWithCalendar = ({ ...props }: any) => {
       label={styles.label}
       placeholder="Choose date"
       onFocus={() => null}
-      contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(34) }}
+         theme={{ colors: { background: theme.colors.background } }}
+      contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(44) }}
       mode="outlined"
       right={
         <Input.Icon

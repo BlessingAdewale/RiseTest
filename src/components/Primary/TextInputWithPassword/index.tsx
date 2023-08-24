@@ -19,12 +19,13 @@ export const TextInputWithPassword = ({ ...props }: any) => {
       fontSize={layout.fontPixel(15)}
       label={styles.label}
       onFocus={() => null}
-      contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(34) }}
+      contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(44) }}
       mode="outlined"
       autoCorrect={false}
       textContentType="password"
       secureTextEntry={!showPassword}
       keyboardShouldPersistTaps="handled"
+      theme={{ colors: { background: theme.colors.background } }}
       right={
         <Input.Icon
           icon={showPassword ? 'eye-outline' : 'eye-off-outline'}
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
     // fontWeight:'normal',
     // fontFamily: 'Poppins_400Regular',
     color: theme.colors.textInputText,
+    backgroundColor: theme.colors.background
   },
   outline: {
     borderRadius: layout.fontPixel(5),

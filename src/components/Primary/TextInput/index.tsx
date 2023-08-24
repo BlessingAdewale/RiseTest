@@ -5,10 +5,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import { TextInput as Input } from 'react-native-paper';
 
 export const TextInput = ({ left, right, ...props }: any) => {
-  // const [generalInput, setGeneralInput ] = React.useState(false)
-  // const [passwordInput, setPasswordInput ] = React.useState(false)
-  // const [calendarInput, setCalendarInput ] = React.useState(false)
-
   return (
     <Input
       style={styles.input}
@@ -23,8 +19,9 @@ export const TextInput = ({ left, right, ...props }: any) => {
       onFocus={() => null}
       left={left}
       right={right}
-      contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(34) }}
+      contentStyle={{ fontFamily: 'DMSans_700Bold', height: layout.heightPixel(44) }}
       mode="outlined"
+      theme={{ colors: { background: theme.colors.background } }}
       {...props}
     />
   );

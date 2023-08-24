@@ -5,16 +5,31 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button as PaperButton } from 'react-native-paper';
 
-export const TextButton = ({ mode, style, onPress, marginTop, borderRadius, fontFamily, fontSize, width, height, ...props }: any) => {
+export const TextButton = ({
+  mode,
+  style,
+  onPress,
+  contentStyle,
+  marginTop,
+  borderRadius,
+  backgroundColor,
+  textColor,
+  fontFamily,
+  fontSize,
+  width,
+  height,
+  ...props
+}: any) => {
   return (
     <PaperButton
-      style={[{ marginTop: marginTop, borderRadius: borderRadius,  width: width, height: height }, style ]}
-      labelStyle={[styles.text, {fontFamily: fontFamily, fontSize: fontSize }]}
+      style={[
+        { marginTop: marginTop, borderRadius: borderRadius, width: width, height: height },
+        style,
+      ]}
+      labelStyle={[styles.text, { fontFamily: fontFamily, fontSize: fontSize, color: textColor }]}
       mode={mode}
-      contentStyle={{
-        // padding: layout.pixelSizeVertical(8),
-   
-      }}
+      contentStyle={contentStyle}
+      buttonColor={backgroundColor}
       onPress={onPress}
       {...props}
     />
@@ -23,7 +38,6 @@ export const TextButton = ({ mode, style, onPress, marginTop, borderRadius, font
 
 const styles = StyleSheet.create({
   text: {
-    color: theme.colors.background,
     textAlign: 'center',
     fontFamily: 'DMSans_400Regular',
     fontSize: layout.fontPixel(12),

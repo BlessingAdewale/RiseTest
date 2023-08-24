@@ -7,7 +7,7 @@ const data = [
     title: 'Quality assets',
     subTitle: 'Rise invests your money into the best dollar investments around the world.',
     backgroundColor: '#FEFAF7',
-    titleColor: '#FE7122'
+    titleColor: '#FE7122',
   },
   {
     id: '2',
@@ -15,7 +15,7 @@ const data = [
     title: 'Superior Selection',
     subTitle: 'Our expert team and intelligent algorithms select assets that beat the markets.',
     backgroundColor: '#FDF4F9',
-    titleColor: '#B80074'
+    titleColor: '#B80074',
   },
   {
     id: '3',
@@ -24,7 +24,7 @@ const data = [
     subTitle:
       'You earn more returns, achieve more of your financial goals and protect your money from devaluation.',
     backgroundColor: '#F6FFFE',
-    titleColor: '#0898A0'
+    titleColor: '#0898A0',
   },
 ];
 

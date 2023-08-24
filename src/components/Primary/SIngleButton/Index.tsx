@@ -10,6 +10,7 @@ export const SingleButton = ({ mode, style, errorText, setErrorText, ...props }:
       style={[styles.button, mode === 'outlined']}
       labelStyle={styles.text}
       mode={mode}
+      buttonColor={theme.colors.teal1}
       contentStyle={{
         paddingVertical: layout.pixelSizeVertical(8),
         width: layout.widthPixel(335),
@@ -22,12 +23,13 @@ export const SingleButton = ({ mode, style, errorText, setErrorText, ...props }:
 const styles = StyleSheet.create({
   button: {
     marginTop: layout.pixelSizeVertical(40),
-    borderRadius: layout.fontPixel(30),
+    borderRadius: layout.fontPixel(5),
   },
   text: {
     color: theme.colors.background,
     textAlign: 'center',
-    fontFamily: 'Roboto_500Medium',
+    fontFamily: 'DMSans_400Regular',
+    fontWeight: '700',
     fontSize: layout.fontPixel(14),
   },
 });
