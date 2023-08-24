@@ -31,6 +31,7 @@ export function OTPCode({ value, setValue }: any) {
         onChangeText={setValue}
         cellCount={CELL_COUNT}
         rootStyle={styles.codeFieldRoot}
+        secureTextEntry={true}
         keyboardType="number-pad"
         textContentType="oneTimeCode"
         renderCell={({ index, symbol, isFocused }) => (
@@ -59,11 +60,11 @@ const styles = StyleSheet.create({
     width: layout.widthPixel(43),
     height: layout.heightPixel(46),
     lineHeight: layout.heightPixel(38),
-    fontFamily: 'Poppins_600SemiBold',
+    fontFamily: 'SpaceGrotesk_600SemiBold',
     fontSize: layout.fontPixel(24),
     borderWidth: layout.fontPixel(1),
     borderRadius: layout.fontPixel(5),
-    borderColor: 'rgba(51, 51, 51, 0.45)',
+    borderColor: '#0898A0',
     textAlign: 'center',
     paddingTop: layout.pixelSizeVertical(5),
   },

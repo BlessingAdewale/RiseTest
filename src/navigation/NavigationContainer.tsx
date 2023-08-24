@@ -7,8 +7,8 @@ import { AuthStackNavigator } from './AuthStackNavigator';
 export const NavigationContainer = () => {
   return (
     <BaseNavigationContainer>
-      {/* <RootStackNavigator /> */}
-      <AuthStackNavigator />
+      <RootStackNavigator />
+      {/* <AuthStackNavigator /> */}
     </BaseNavigationContainer>
   );
 };

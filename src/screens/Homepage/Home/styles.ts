@@ -31,4 +31,5 @@ export const styles = StyleSheet.create({
   earn: {
     marginRight: layout.pixelSizeHorizontal(10),
   },
+  labelStyle:{  fontFamily: 'DMSans_400Regular', marginBottom: layout.pixelSizeVertical(8), color: theme.colors.background, textAlign: 'center'}
 });

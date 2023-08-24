@@ -17,7 +17,7 @@ const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 export const AuthStackNavigator = () => {
   return (
     <AuthStack.Navigator
-      initialRouteName="CreatePin"
+      initialRouteName="ConfirmPin"
       screenOptions={{
         headerShown: false,
       }}

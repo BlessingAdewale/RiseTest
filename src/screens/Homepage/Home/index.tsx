@@ -34,10 +34,13 @@ export const Home = () => {
             children="Earn 3% bonus"
             style={styles.earn}
             width={layout.widthPixel(111)}
+            fontfaimily=""
+            labelStyle={styles.labelStyle}
             onPress={() => null}
+            textColor={theme.colors.background}
             buttonColor={theme.colors.teal1}
             borderRadius={layout.fontPixel(16)}
-            height={layout.heightPixel(30)}
+        
           />
           <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <NotificationBell
@@ -48,6 +51,14 @@ export const Home = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <TextButton
+      mode="outlined"
+      children="Add money"
+      icon="plus"
+      buttonColor="rgba(113, 135, 156, 0.10))"
+      textColor={theme.colors.teal1}
+    
+      />
     </SafeAreaView>
   );
 };

@@ -3,10 +3,10 @@ import { layout } from '@utils';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export const SignUpHeader = ({ title, subTitle, titleMarginTop }: any) => {
+export const SignUpHeader = ({ title, subTitle }: any) => {
   return (
     <View>
-      <Text style={[styles.title, {marginTop: marginTop}]}>{title}</Text>
+      <Text style={[styles.title]}>{title}</Text>
       <Text style={styles.subTitle}>{subTitle}</Text>
     </View>
   );
