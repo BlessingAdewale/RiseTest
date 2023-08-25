@@ -1,6 +1,5 @@
 import { theme } from '@constants';
 import { layout } from '@utils';
-import { processFontFamily } from 'expo-font';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button as PaperButton } from 'react-native-paper';
@@ -16,6 +15,7 @@ export const TextButton = ({
   textColor,
   fontFamily,
   fontSize,
+  fontWeight,
   width,
   height,
   ...props
@@ -26,7 +26,10 @@ export const TextButton = ({
         { marginTop: marginTop, borderRadius: borderRadius, width: width, height: height },
         style,
       ]}
-      labelStyle={[styles.text, { fontFamily: fontFamily, fontSize: fontSize, color: textColor }]}
+      labelStyle={[
+        styles.text,
+        { fontFamily: fontFamily, fontSize: fontSize, color: textColor, fontWeight: fontWeight },
+      ]}
       mode={mode}
       contentStyle={contentStyle}
       buttonColor={backgroundColor}

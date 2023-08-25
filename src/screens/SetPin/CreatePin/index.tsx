@@ -6,8 +6,7 @@ import LeftArrow from '@assets/svg/leftarrow.svg';
 import { layout } from '@utils';
 
 export const CreatePin = () => {
-
-  const [value, setValue] = React.useState('')
+  const [value, setValue] = React.useState('');
   return (
     <SafeAreaView style={[globalStyles.wrapper, globalStyles.container]}>
       <SignUpHeader

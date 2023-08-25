@@ -6,7 +6,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { onboardingData, theme } from '@constants';
 import { layout } from '@utils';
 
-export const OnboardingItem = ({ item, index }: any) => {
+export const OnboardingItem = ({ item, index, scrollTo, goBack }: any) => {
   return (
     <View style={{ backgroundColor: `${item.backgroundColor}`, width: layout.width }}>
       <View style={[styles.container]}>
@@ -27,14 +27,14 @@ export const OnboardingItem = ({ item, index }: any) => {
               <TextButton
                 mode="contained"
                 disabled={index === 0 ? true : false}
-                onPress={() => null}
+                onPress={goBack}
                 icon="arrow-left-thin"
                 textColor={index === 0 ? 'rgba(113, 135, 156, 0.10)' : item.titleColor}
                 borderRadius={layout.fontPixel(5)}
                 backgroundColor="rgba(113, 135, 156, 0.10)"
               />
               <TextButton
-                onPress={() => null}
+                onPress={scrollTo}
                 mode="contained"
                 borderRadius={layout.fontPixel(5)}
                 backgroundColor="rgba(113, 135, 156, 0.10)"

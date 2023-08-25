@@ -7,8 +7,12 @@ import NotificationBell from '@assets/svg/notification.svg';
 import { layout } from '@utils';
 import { Badge } from 'react-native-paper';
 import { theme } from '@constants';
+import UncolouredArrow from '@assets/svg/smallrightarrow.svg';
+import ColouredArrow from '@assets/svg/colouredsmallrightarrow.svg';
 
 export const Home = () => {
+  const [plan, setPlan] = React.useState(false);
+
   const date = new Date();
   const currentTime = date.getHours();
 
@@ -40,7 +44,6 @@ export const Home = () => {
             textColor={theme.colors.background}
             buttonColor={theme.colors.teal1}
             borderRadius={layout.fontPixel(16)}
-        
           />
           <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <NotificationBell
@@ -52,13 +55,41 @@ export const Home = () => {
         </View>
       </View>
       <TextButton
-      mode="outlined"
-      children="Add money"
-      icon="plus"
-      buttonColor="rgba(113, 135, 156, 0.10))"
-      textColor={theme.colors.teal1}
-    
+        mode="outlined"
+        children="Add money"
+        icon="plus"
+        buttonColor="#FFF"
+        textColor={theme.colors.teal1}
+        borderRadius={layout.fontPixel(5)}
+        fontFamily="DMSans_700Bold"
+        style={styles.addMoney}
+        contentStyle={{
+          height: layout.heightPixel(56),
+        }}
+        onPress={() => null}
       />
+      <View style={[globalStyles.rowBetween]}>
+        <Text style={styles.createAPlan}> {plan? "Your plans" : "Create a Plan"}</Text>
+        <TouchableOpacity  style={[  globalStyles.rowBetween]}  onPress={ plan? ()=> null : ()=> null }   >
+          <Text
+            style={[
+              styles.viewAllPlans,
+              { color: plan ? '#0898A0' : '#94A1AD' },
+            ]}
+          >
+            View all plans
+          </Text>
+          <View style ={styles.arrow} >
+          {plan ? (
+            <ColouredArrow width={layout.widthPixel(4)} height={layout.heightPixel(9)} />
+          ) : (
+            <UncolouredArrow width={layout.widthPixel(4)} height={layout.heightPixel(9)} />
+          )}
+          </View>
+   
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.investmentPlan}  > { plan? null : "Start your investment journey by creating a plan"} </Text>
     </SafeAreaView>
   );
 };
