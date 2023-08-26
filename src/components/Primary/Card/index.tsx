@@ -1,10 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Card as CardPaper } from 'react-native-paper';
 
-export const Card = () => {
+export const Card = ({
+  mode,
+  viewStyle,
+  children,
+  contentStyle,
+  disabled,
+  onPress,
+  style,
+  ...props
+}: any) => {
   return (
     <View>
-      <Text></Text>
+      <TouchableOpacity disabled={disabled} onPress={onPress} style={viewStyle}>
+        {children}
+      </TouchableOpacity>
     </View>
   );
 };

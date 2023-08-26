@@ -8,13 +8,13 @@ import MarkIcon from '@assets/svg/markicon.svg';
 import { SingleButton } from '../SingleButton';
 import { globalStyles } from '@globalStyles';
 
-export const VerificationSuccessfulPage = ({ title, onPress, subTitle }: any) => {
+export const VerificationSuccessfulPage = ({ title, onPress, change, children, subTitle }: any) => {
   return (
     <View style={[globalStyles.container]}>
       <MarkIcon width={layout.widthPixel(90)} height={layout.heightPixel(90)} style={styles.svg} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subTitle}>{subTitle}</Text>
-      <SingleButton children="Okay" style={styles.button} onPress={onPress} />
+      <SingleButton children={change ? children : 'Okay'} style={styles.button} onPress={onPress} />
     </View>
   );
 };

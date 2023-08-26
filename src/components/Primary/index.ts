@@ -10,3 +10,4 @@ export * from './TextInputWithPassword';
 export * from './TextInputWithPhoneNumber';
 export * from './TextInputWthCalendar';
 export * from './VerificationSuccessfulPage';
+export * from './KeyboardAvoidingView';

@@ -1,10 +1,12 @@
+import { AppBar } from '@components';
+import { globalStyles } from '@globalStyles';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 
 export const FundWallet = () => {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <SafeAreaView style={[globalStyles.container, globalStyles.wrapper]}>
+      <AppBar title="Fund Wallet" icon="arrow-left" />
+    </SafeAreaView>
   );
 };

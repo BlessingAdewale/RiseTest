@@ -20,7 +20,7 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 export const RootStackNavigator = () => {
   return (
     <RootStack.Navigator
-      initialRouteName="HomeStack"
+      initialRouteName="Review"
       screenOptions={{
         headerShown: false,
       }}
