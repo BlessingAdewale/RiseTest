@@ -4,10 +4,13 @@ import theplanReducer from '../features/theplan';
 
 import credentialsReducer from '../features/credentials';
 
+import otpReducer from '../features/otp';
+
 export const store = configureStore({
   reducer: {
     theplan: theplanReducer,
     credentials: credentialsReducer,
+    otp: otpReducer,
   },
 });
 

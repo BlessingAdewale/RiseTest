@@ -11,10 +11,19 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import { theme } from '@constants';
+import { Value, newValue, useAppDispatch, useAppSelector } from '@state';
 
 const CELL_COUNT = 6;
 
-export function OTPCode({ value, setValue }: any) {
+export function OTPCode({ firstOtp,  value, setValue }: any) {
+
+
+  const dispatch = useAppDispatch();
+{
+  firstOtp?   dispatch(Value(value)) :  dispatch(newValue(value))
+}
+
+ 
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
@@ -22,7 +31,7 @@ export function OTPCode({ value, setValue }: any) {
   });
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback  onPress={() => Keyboard.dismiss()}>
       <CodeField
         ref={ref}
         {...props}

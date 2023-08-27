@@ -4,9 +4,13 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LeftArrow from '@assets/svg/leftarrow.svg';
 import { layout } from '@utils';
+import { useAppDispatch, useAppSelector } from '@state';
 
 export const ConfirmPin = () => {
-  const [value, setValue] = React.useState('');
+
+  const { value, newValue } = useAppSelector((state) => state.otp);
+
+  const [secondValue, setValue] = React.useState('');
   return (
     <SafeAreaView style={[globalStyles.wrapper, globalStyles.container]}>
       <SignUpHeader
@@ -17,7 +21,7 @@ export const ConfirmPin = () => {
         <LeftArrow width={layout.widthPixel(13.328)} height={layout.heightPixel(13.328)} />
       </TouchableOpacity>
 
-      <OTPCode value={value} setValue={setValue} />
+      <OTPCode firstOtp={false} value={value} setValue={setValue} />
       <NumberPad />
     </SafeAreaView>
   );

@@ -122,5 +122,8 @@ const styles = StyleSheet.create({
   },
   numberContainer: {
     margin: layout.fontPixel(12),
+    //    flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignItems: 'center'
   },
 });

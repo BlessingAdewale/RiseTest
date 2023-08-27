@@ -5,7 +5,10 @@ import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-na
 import LeftArrow from '@assets/svg/leftarrow.svg';
 import { layout } from '@utils';
 
+
 export const CreatePin = () => {
+ 
+
   const [value, setValue] = React.useState('');
   return (
     <SafeAreaView style={[globalStyles.wrapper, globalStyles.container]}>
@@ -17,7 +20,7 @@ export const CreatePin = () => {
         <LeftArrow width={layout.widthPixel(13.328)} height={layout.heightPixel(13.328)} />
       </TouchableOpacity>
 
-      <OTPCode value={value} setValue={setValue} />
+      <OTPCode  firstOtp={true} value={value} setValue={setValue} />
       <NumberPad />
     </SafeAreaView>
   );
