@@ -1,4 +1,4 @@
-import { OTPCode, SignUpHeader } from '@components';
+import { NumberPad, OTPCode, SignUpHeader } from '@components';
 import { globalStyles } from '@globalStyles';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
@@ -18,6 +18,7 @@ export const ConfirmPin = () => {
       </TouchableOpacity>
 
       <OTPCode value={value} setValue={setValue} />
+      <NumberPad />
     </SafeAreaView>
   );
 };

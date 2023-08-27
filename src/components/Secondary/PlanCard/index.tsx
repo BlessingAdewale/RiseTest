@@ -6,60 +6,65 @@ import { StyleSheet, FlatList, Text, View, ImageBackground } from 'react-native'
 import PlusSign from '@assets/svg/plussign.svg';
 import { AntDesign } from '@expo/vector-icons';
 import { globalStyles } from '@globalStyles';
+import { useAppDispatch, useAppSelector } from '@state';
 
-export const PlanCard = () => {
+export const PlanCard = ({ ShowFirstIndex }: { ShowFirstIndex: boolean }) => {
+  const { plan } = useAppSelector((state) => state.theplan);
+
   const renderItem = React.useCallback(({ item, index }: any) => {
     return (
       <View>
-        {index === 0 ? (
-          <Card
-            viewStyle={styles.defaultCard}
-            children={
-              <View>
-                <PlusSign
-                  width={layout.widthPixel(42.64)}
-                  height={layout.heightPixel(42.64)}
-                  style={styles.svgPlusSign}
-                />
-                <Text style={[styles.createAnInvestment]}>Create an</Text>
-                <Text style={styles.createAnInvestment}>investment plan</Text>
-              </View>
-            }
-          />
-        ) : (
-          <Card
-            viewStyle={styles.container}
-            children={
-              <ImageBackground source={item.image} resizeMode="cover" style={styles.image}>
-                <View style={[globalStyles.rowBetween]}>
-                  <View
-                    style={[
-                      {
-                        flexDirection: 'column',
-                        justifyContent: 'flex-end',
-                        paddingHorizontal: layout.pixelSizeHorizontal(13.22),
-                        marginTop: layout.pixelSizeVertical(166),
-                      },
-                    ]}
-                  >
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.title2}>{item.amount}</Text>
-                    <Text style={styles.title}>{item.asset}</Text>
+        {index === 0
+          ? ShowFirstIndex && (
+              <Card
+                viewStyle={styles.defaultCard}
+                children={
+                  <View>
+                    <PlusSign
+                      width={layout.widthPixel(42.64)}
+                      height={layout.heightPixel(42.64)}
+                      style={styles.svgPlusSign}
+                    />
+                    <Text style={[styles.createAnInvestment]}>Create an</Text>
+                    <Text style={styles.createAnInvestment}>investment plan</Text>
                   </View>
-                  <AntDesign
-                    name="arrowright"
-                    size={24}
-                    color="#FFF"
-                    style={{
-                      marginTop: layout.pixelSizeVertical(174),
-                      marginRight: layout.pixelSizeHorizontal(13.2),
-                    }}
-                  />
-                </View>
-              </ImageBackground>
-            }
-          />
-        )}
+                }
+              />
+            )
+          : plan && (
+              <Card
+                viewStyle={styles.container}
+                children={
+                  <ImageBackground source={item.image} resizeMode="cover" style={styles.image}>
+                    <View style={[globalStyles.rowBetween]}>
+                      <View
+                        style={[
+                          {
+                            flexDirection: 'column',
+                            justifyContent: 'flex-end',
+                            paddingHorizontal: layout.pixelSizeHorizontal(13.22),
+                            marginTop: layout.pixelSizeVertical(166),
+                          },
+                        ]}
+                      >
+                        <Text style={styles.title}>{item.title}</Text>
+                        <Text style={styles.title2}>{item.amount}</Text>
+                        <Text style={styles.title}>{item.asset}</Text>
+                      </View>
+                      <AntDesign
+                        name="arrowright"
+                        size={24}
+                        color="#FFF"
+                        style={{
+                          marginTop: layout.pixelSizeVertical(174),
+                          marginRight: layout.pixelSizeHorizontal(13.2),
+                        }}
+                      />
+                    </View>
+                  </ImageBackground>
+                }
+              />
+            )}
       </View>
     );
   }, []);

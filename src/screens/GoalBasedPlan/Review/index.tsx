@@ -1,11 +1,11 @@
-import { AppBar, Card } from '@components';
+import { AppBar, Card, DoubleButton } from '@components';
 import { theme } from '@constants';
 import { globalStyles } from '@globalStyles';
 import { layout } from '@utils';
 import { Divider } from 'react-native-paper';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import Information from '@assets/svg/information.svg'
+import Information from '@assets/svg/information.svg';
 
 export const Review = () => {
   return (
@@ -33,16 +33,27 @@ export const Review = () => {
         viewStyle={styles.viewStyle}
         disabled={true}
         children={
-          <View
-            style={[globalStyles.rowBetween, { padding: layout.fontPixel(10) }]}
-          >
-            <Information     width= {layout.widthPixel(24)}
-    height= {layout.heightPixel(24)}  style={styles.svg} />
+          <View style={[globalStyles.rowBetween, { padding: layout.fontPixel(10) }]}>
+            <Information
+              width={layout.widthPixel(24)}
+              height={layout.heightPixel(24)}
+              style={styles.svg}
+            />
             <Text style={styles.returns}>
               Returns not guaranteed. Investing involves risk. Read our Disclosures.
             </Text>
           </View>
         }
+      />
+      <Text style={styles.settings}>
+        These are your starting settings, they can always be updated.
+      </Text>
+      <DoubleButton
+        onPress1={() => null}
+        onPress2={() => null}
+        style={styles.doubleButton}
+        children1="Agree & Continue"
+        children2="Start over"
       />
     </SafeAreaView>
   );
@@ -121,7 +132,16 @@ const styles = StyleSheet.create({
     color: theme.colors.textSoft,
     width: layout.widthPixel(263),
   },
-  svg:{
+  svg: {
     marginRight: layout.pixelSizeHorizontal(17),
-  }
+  },
+  doubleButton: {
+    // marginTop: layout.pixelSizeVertical(27.62),
+  },
+  settings: {
+    textAlign: 'center',
+    fontSize: layout.fontPixel(12),
+    fontFamily: 'DMSans_400Regular',
+    color: theme.colors.textSoft,
+  },
 });

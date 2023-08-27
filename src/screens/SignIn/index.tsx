@@ -6,15 +6,13 @@ import { Formik } from 'formik';
 import { theme, useSchemaHelper } from '@constants';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { layout } from '@utils';
-interface ValuesType {
-  email: string;
-  password: string;
-}
+import { LoginFormType } from 'constants/model';
+
 export const SignIn = () => {
   const [loading, setLoading] = React.useState(false);
 
   //  const { passwordValidationSchema } = useSchemaHelper()
-  const SubmitForm = (values: ValuesType) => {};
+  const SubmitForm = (values: LoginFormType) => {};
 
   return (
     <SafeAreaView style={[globalStyles.container, globalStyles.wrapper]}>
@@ -23,17 +21,20 @@ export const SignIn = () => {
         subTitle="Let’s get you logged in to get back to building your dollar-denominated investment portfolio."
       />
 
-      <Formik initialValues={{ email: '', password: '' }} onSubmit={(values) => SubmitForm(values)}>
+      <Formik
+        initialValues={{ email_address: '', password: '' }}
+        onSubmit={(values) => SubmitForm(values)}
+      >
         {({ handleChange, handleBlur, handleSubmit, isValid, values, errors, touched }) => (
           <>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={styles.textInput}>
               <TextInput
                 label="Email Address"
-                value={values.email}
+                value={values.email_address}
                 keyboardType="email-address"
-                onChangeText={handleChange('email')}
+                onChangeText={handleChange('email_address')}
                 onBlur={handleBlur('email')}
-                errorText={errors.email}
+                errorText={errors.email_address}
               />
               <TextInputWithPassword
                 label="Password"

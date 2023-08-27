@@ -1,10 +1,25 @@
 import { theme } from '@constants';
 import { layout } from '@utils';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Keyboard } from 'react-native';
 import { TextInput as Input } from 'react-native-paper';
 
+import { Calendar, LocaleConfig } from 'react-native-calendars';
+
 export const TextInputWithCalendar = ({ ...props }: any) => {
+  const renderCalendar = () => {
+    const [date, setDate] = useState('');
+
+    return (
+      <Calendar
+        onDayPress={(day) => {
+          setDate(day.dateString);
+        }}
+        style={styles.calendarContainer}
+      />
+    );
+  };
+
   return (
     <Input
       style={styles.input}
@@ -30,7 +45,7 @@ export const TextInputWithCalendar = ({ ...props }: any) => {
             isTextInputFocused ? theme.colors.teal1 : '#7A7A7A'
           }
           style={{ marginTop: layout.pixelSizeVertical(12) }}
-          onPress={() => null}
+          onPress={renderCalendar}
         />
       }
       {...props}
@@ -51,5 +66,10 @@ const styles = StyleSheet.create({
   },
   label: {
     // color: '#454545',
+  },
+  calendarContainer: {
+    borderWidth: 1,
+    borderColor: theme.colors.teal1,
+    height: layout.heightPixel(200),
   },
 });

@@ -2,9 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 // ...
 import theplanReducer from '../features/theplan';
 
+import credentialsReducer from '../features/credentials';
+
 export const store = configureStore({
   reducer: {
     theplan: theplanReducer,
+    credentials: credentialsReducer,
   },
 });
 

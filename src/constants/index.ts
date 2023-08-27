@@ -4,5 +4,19 @@ import icons from './icons';
 import images from './images';
 import onboardingData from './onboardingData';
 import planData from './planData';
+import bankData from './bankData';
 
-export { theme, icons, images, useSchemaHelper, onboardingData, planData };
+import fundWalletData from './fundWalletData';
+import accountBalanceData from './accountBalanceData';
+
+export {
+  theme,
+  icons,
+  images,
+  useSchemaHelper,
+  onboardingData,
+  bankData,
+  fundWalletData,
+  planData,
+  accountBalanceData,
+};

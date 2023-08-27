@@ -1,15 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  ScrollView,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { Card as CardPaper } from 'react-native-paper';
 
+type ContainerProps = ScrollView['props'] & {
+  children: Element;
+  viewStyle?: StyleProp<ViewStyle> | { width: number; height: number; borderRadius: number };
+
+  disabled: boolean;
+  onPress: () => void;
+};
+
 export const Card = ({
-  mode,
   viewStyle,
   children,
-  contentStyle,
+
   disabled,
   onPress,
-  style,
+
   ...props
 }: any) => {
   return (

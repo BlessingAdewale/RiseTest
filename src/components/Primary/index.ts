@@ -11,3 +11,5 @@ export * from './TextInputWithPhoneNumber';
 export * from './TextInputWthCalendar';
 export * from './VerificationSuccessfulPage';
 export * from './KeyboardAvoidingView';
+export * from './NumberPad';
+export * from './AccountBalanceSlide';

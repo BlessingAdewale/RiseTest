@@ -6,19 +6,23 @@ import { Formik } from 'formik';
 import { useSchemaHelper } from '@constants';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { layout } from '@utils';
+import { getEmail, getPassword, useAppDispatch, useAppSelector } from '@state';
 import Checked from '@assets/svg/check.svg';
 import Unchecked from '@assets/svg/uncheck.svg';
-
-interface ValuesType {
-  email: string;
-  password: string;
-}
+import { SignUpFormType } from 'constants/model';
 
 export const CreateAnAccount = () => {
+  const dispatch = useAppDispatch();
+
   const { passwordValidationSchema } = useSchemaHelper();
   const [loading, setLoading] = React.useState(false);
 
-  const SubmitForm = (values: ValuesType) => {};
+  const SubmitForm = (values: SignUpFormType) => {
+  // transform email string to lowercase to avoid case sensitivity issues in login
+  values.email_address = values.email_address.toLowerCase();
+  dispatch(getEmail(values.email_address));
+  dispatch(getPassword(values.password));
+  };
 
   return (
     <SafeAreaView style={[globalStyles.wrapper, globalStyles.container]}>
@@ -29,7 +33,7 @@ investment portfolio"
       />
       <Formik
         validationSchema={passwordValidationSchema}
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email_address: '', password: '' }}
         onSubmit={(values) => SubmitForm(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, isValid, values, errors, touched }) => (
@@ -37,11 +41,11 @@ investment portfolio"
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={styles.textInput}>
               <TextInput
                 label="Email Address"
-                value={values.email}
+                value={values.email_address}
                 keyboardType="email-address"
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                errorText={errors.email}
+                onChangeText={handleChange('email_address')}
+                onBlur={handleBlur('email_address')}
+                errorText={errors.email_address}
               />
               <TextInputWithPassword
                 label="Password"

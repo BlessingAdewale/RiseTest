@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 import { styles } from './styles';
-import { Card, PlanCard, TextButton } from '@components';
+import { AccountBalanceSlide, Card, PlanCard, TextButton } from '@components';
 import NotificationBell from '@assets/svg/notification.svg';
 import { layout } from '@utils';
 import { Badge } from 'react-native-paper';
@@ -21,10 +21,12 @@ import QuestionMark from '@assets/svg/questionMark.svg';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import ShareLogo from '@assets/svg/share.svg';
 import RiseLogo from '@assets/svg/riselogo.svg';
+import { useAppDispatch, useAppSelector } from '@state';
 
 export const Home = () => {
+  const { plan } = useAppSelector((state) => state.theplan);
+
   const tabBarHeight = useBottomTabBarHeight();
-  const [plan, setPlan] = React.useState(false);
 
   const date = new Date();
   const currentTime = date.getHours();
@@ -80,6 +82,8 @@ export const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
+
+        <AccountBalanceSlide />
         <TextButton
           mode="outlined"
           children="Add money"
@@ -118,7 +122,7 @@ export const Home = () => {
           {plan ? null : 'Start your investment journey by creating a plan'}{' '}
         </Text>
         <View style={{ flexDirection: 'row' }}>
-          <PlanCard />
+          <PlanCard ShowFirstIndex={true} />
         </View>
         <Card
           disabled={true}

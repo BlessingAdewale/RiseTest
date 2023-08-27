@@ -12,20 +12,22 @@ import {
 import { globalStyles } from '@globalStyles';
 import { theme } from '@constants';
 import { layout } from '@utils';
-
-interface ValuesType {
-  firstname: string;
-  lastname: string;
-  nickname: string;
-  phoneNumber: string;
-  dateofbirth: string;
-}
+import { TellUsMoreAboutFormType } from 'constants/model';
+import { useCreateUserData } from '@hooks';
+import { useAppDispatch, useAppSelector } from '@state';
 
 export const TellUsMoreAboutYou = () => {
-  const [loading, setLoading] = React.useState(false);
+  
+  const { email_address, password } = useAppSelector((state) => state.credentials);
 
-  const SubmitForm = (values: ValuesType) => {};
+  const { mutate, isLoading, isError, error, isSuccess } = useCreateUserData();
 
+  const SubmitForm = (values: TellUsMoreAboutFormType) => {
+    const registrationData = {  email_address, password, ...values };
+    mutate(registrationData);
+  };
+
+//  {isSuccess &&  }
   return (
     <SafeAreaView style={[globalStyles.wrapper, globalStyles.container]}>
       <SignUpHeader
@@ -35,11 +37,11 @@ export const TellUsMoreAboutYou = () => {
 
       <Formik
         initialValues={{
-          firstname: '',
-          lastname: '',
-          nickname: '',
-          dateofbirth: '',
-          phoneNumber: '',
+          first_name: '',
+          last_name: '',
+          nick_name: '',
+          date_of_birth: '',
+          phone_number: '',
         }}
         onSubmit={(values) => SubmitForm(values)}
       >
@@ -48,40 +50,40 @@ export const TellUsMoreAboutYou = () => {
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={styles.container}>
               <TextInput
                 label="Legal First Name"
-                value={values.firstname}
-                onChangeText={handleChange('firstname')}
-                onBlur={handleBlur('firstname')}
+                value={values.first_name}
+                onChangeText={handleChange('first_name')}
+                onBlur={handleBlur('first_name')}
                 style={styles.firstname}
               />
 
               <TextInput
                 label="Legal Last Name"
-                value={values.lastname}
-                onChangeText={handleChange('lastname')}
-                onBlur={handleBlur('lastname')}
+                value={values.last_name}
+                onChangeText={handleChange('last_name')}
+                onBlur={handleBlur('last_name')}
                 style={styles.lastname}
               />
 
               <TextInput
                 label="Nick Name"
-                value={values.nickname}
-                onChangeText={handleChange('nickname')}
-                onBlur={handleBlur('nickname')}
+                value={values.nick_name}
+                onChangeText={handleChange('nick_name')}
+                onBlur={handleBlur('nick_name')}
                 style={styles.nickname}
               />
 
               <TextInputWithPhoneNumber
                 label="Phone Number"
-                value={values.phoneNumber}
-                onChangeText={handleChange('phoneNumber')}
-                onBlur={handleBlur('phoneNumber')}
+                value={values.phone_number}
+                onChangeText={handleChange('phone_number')}
+                onBlur={handleBlur('phone_number')}
                 style={styles.phoneNumber}
               />
               <TextInputWithCalendar
                 label="Date Of Birth"
-                value={values.dateofbirth}
-                onChangeText={handleChange('dateofbirth')}
-                onBlur={handleBlur('dateofbirth')}
+                value={values.date_of_birth}
+                onChangeText={handleChange('date_of_birth')}
+                onBlur={handleBlur('date_of_birth')}
               />
             </TouchableWithoutFeedback>
 
@@ -89,10 +91,11 @@ export const TellUsMoreAboutYou = () => {
               <SingleButton
                 mode="contained"
                 children="Continue"
-                loading={loading}
+                loading={isLoading}
                 onPress={handleSubmit}
                 style={styles.button}
               />
+              {/* {isError && <Text>{error}</Text>} */}
             </TouchableWithoutFeedback>
           </>
         )}
