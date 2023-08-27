@@ -17,17 +17,16 @@ import { useCreateUserData } from '@hooks';
 import { useAppDispatch, useAppSelector } from '@state';
 
 export const TellUsMoreAboutYou = () => {
-  
   const { email_address, password } = useAppSelector((state) => state.credentials);
 
   const { mutate, isLoading, isError, error, isSuccess } = useCreateUserData();
 
   const SubmitForm = (values: TellUsMoreAboutFormType) => {
-    const registrationData = {  email_address, password, ...values };
+    const registrationData = { email_address, password, ...values };
     mutate(registrationData);
   };
 
-//  {isSuccess &&  }
+  //  {isSuccess &&  }
   return (
     <SafeAreaView style={[globalStyles.wrapper, globalStyles.container]}>
       <SignUpHeader

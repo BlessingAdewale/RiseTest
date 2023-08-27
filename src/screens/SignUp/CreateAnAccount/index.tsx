@@ -18,10 +18,10 @@ export const CreateAnAccount = () => {
   const [loading, setLoading] = React.useState(false);
 
   const SubmitForm = (values: SignUpFormType) => {
-  // transform email string to lowercase to avoid case sensitivity issues in login
-  values.email_address = values.email_address.toLowerCase();
-  dispatch(getEmail(values.email_address));
-  dispatch(getPassword(values.password));
+    // transform email string to lowercase to avoid case sensitivity issues in login
+    values.email_address = values.email_address.toLowerCase();
+    dispatch(getEmail(values.email_address));
+    dispatch(getPassword(values.password));
   };
 
   return (

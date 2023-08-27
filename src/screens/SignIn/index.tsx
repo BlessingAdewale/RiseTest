@@ -1,18 +1,24 @@
 import { SignUpHeader, SingleButton, TextInput, TextInputWithPassword } from '@components';
 import { globalStyles } from '@globalStyles';
 import React from 'react';
-import { View, Text, SafeAreaView, Keyboard, StyleSheet } from 'react-native';
+import { View, Text, SafeAreaView, Keyboard, StyleSheet, Alert } from 'react-native';
 import { Formik } from 'formik';
 import { theme, useSchemaHelper } from '@constants';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { layout } from '@utils';
 import { LoginFormType } from 'constants/model';
+import { useLoginUserData } from '@hooks';
 
 export const SignIn = () => {
-  const [loading, setLoading] = React.useState(false);
+  const { mutate, isLoading, isSuccess, isError, error } = useLoginUserData();
 
   //  const { passwordValidationSchema } = useSchemaHelper()
-  const SubmitForm = (values: LoginFormType) => {};
+  const SubmitForm = (values: LoginFormType) => {
+    const loginData = { ...values };
+    mutate(loginData);
+  };
+
+  // { isSuccess &&    }
 
   return (
     <SafeAreaView style={[globalStyles.container, globalStyles.wrapper]}>
@@ -49,11 +55,15 @@ export const SignIn = () => {
               <SingleButton
                 mode="contained"
                 children="Sign In"
-                loading={loading}
+                loading={isLoading}
                 disabled={!isValid}
                 onPress={handleSubmit}
                 style={styles.button}
               />
+
+              {/* {isError && <>
+              <Text> {error} </Text>
+              </>     } */}
             </TouchableWithoutFeedback>
           </>
         )}

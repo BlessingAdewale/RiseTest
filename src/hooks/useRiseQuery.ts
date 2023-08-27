@@ -5,21 +5,18 @@ const createUser = (registrationData: axiosSignUpFormType) => {
   return request({ url: 'users', method: 'post', data: registrationData });
 };
 
-
-const loginUser = ( loginData: LoginFormType) =>{
-  return  request ({
-url: "sessions", method: 'post', data: loginData
-  })
-}
-
+const loginUser = (loginData: LoginFormType) => {
+  return request({
+    url: 'sessions',
+    method: 'post',
+    data: loginData,
+  });
+};
 
 export const useCreateUserData = () => {
   return useMutation(createUser);
 };
 
-
-export const useLoginUserData =()=>{
-
-return useMutation(loginUser)
-
-}
+export const useLoginUserData = () => {
+  return useMutation(loginUser);
+};
