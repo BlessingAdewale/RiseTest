@@ -5,8 +5,11 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { onboardingData, theme } from '@constants';
 import { layout } from '@utils';
+import { OnBoardingNavigationProp } from 'navigation/types';
+import { useNavigation } from '@react-navigation/native';
 
 export const OnboardingItem = ({ item, index, scrollTo, goBack }: any) => {
+  const navigation = useNavigation<OnBoardingNavigationProp>();
   return (
     <View style={{ backgroundColor: `${item.backgroundColor}`, width: layout.width }}>
       <View style={[styles.container]}>
@@ -16,8 +19,8 @@ export const OnboardingItem = ({ item, index, scrollTo, goBack }: any) => {
           <Text style={styles.subTitle}>{item.subTitle}</Text>
           {index === 2 ? (
             <DoubleButton
-              onPress1={() => null}
-              onPress2={() => null}
+              onPress1={() => navigation.navigate('CreateAnAccount')}
+              onPress2={() => navigation.navigate('SignIn')}
               style={styles.doubleButton}
               children1="Sign Up"
               children2="Sign In"

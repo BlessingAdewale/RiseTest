@@ -1,6 +1,14 @@
 import React from 'react';
-import { Keyboard, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import {
+  Keyboard,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableWithoutFeedback,
+  Alert,
+} from 'react-native';
+
 import { Formik } from 'formik';
 import {
   SignUpHeader,
@@ -13,20 +21,39 @@ import { globalStyles } from '@globalStyles';
 import { theme } from '@constants';
 import { layout } from '@utils';
 import { TellUsMoreAboutFormType } from 'constants/model';
-import { useCreateUserData } from '@hooks';
 import { useAppDispatch, useAppSelector } from '@state';
+import { TellUsMoreAboutYouNavigationProp } from 'navigation/types';
+import { useNavigation } from '@react-navigation/native';
+import { registerUser } from '@hooks';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const TellUsMoreAboutYou = () => {
+  const navigation = useNavigation<TellUsMoreAboutYouNavigationProp>();
   const { email_address, password } = useAppSelector((state) => state.credentials);
 
-  const { mutate, isLoading, isError, error, isSuccess } = useCreateUserData();
+  const [loading, setLoading] = React.useState(false);
+
+  // const { mutate, isLoading, isError, error, isSuccess } = useCreateUserData();
 
   const SubmitForm = (values: TellUsMoreAboutFormType) => {
-    const registrationData = { email_address, password, ...values };
-    mutate(registrationData);
+    // transform email string to lowercase to avoid case sensitivity issues in login
+    email_address.toLowerCase();
+    setLoading(true);
+    registerUser({ ...values, email_address, password })
+      .then((result) => {
+        setLoading(false);
+        console.log(result.data);
+        if (result?.status == 200) {
+          navigation.replace('DoneRegistering');
+        }
+        if (result?.status == 'error') {
+          Alert.alert('Erorr Message', result.data.message);
+          setLoading(false);
+        }
+      })
+      .catch((err) => setLoading(false));
   };
 
-  //  {isSuccess &&  }
   return (
     <SafeAreaView style={[globalStyles.wrapper, globalStyles.container]}>
       <SignUpHeader
@@ -38,15 +65,13 @@ export const TellUsMoreAboutYou = () => {
         initialValues={{
           first_name: '',
           last_name: '',
-          nick_name: '',
           date_of_birth: '',
-          phone_number: '',
         }}
         onSubmit={(values) => SubmitForm(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, isValid, values, errors, touched }) => (
-          <>
-            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={styles.container}>
+          <View style={styles.container}>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <TextInput
                 label="Legal First Name"
                 value={values.first_name}
@@ -54,7 +79,8 @@ export const TellUsMoreAboutYou = () => {
                 onBlur={handleBlur('first_name')}
                 style={styles.firstname}
               />
-
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <TextInput
                 label="Legal Last Name"
                 value={values.last_name}
@@ -62,22 +88,24 @@ export const TellUsMoreAboutYou = () => {
                 onBlur={handleBlur('last_name')}
                 style={styles.lastname}
               />
-
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <TextInput
                 label="Nick Name"
-                value={values.nick_name}
                 onChangeText={handleChange('nick_name')}
                 onBlur={handleBlur('nick_name')}
                 style={styles.nickname}
               />
-
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <TextInputWithPhoneNumber
                 label="Phone Number"
-                value={values.phone_number}
                 onChangeText={handleChange('phone_number')}
                 onBlur={handleBlur('phone_number')}
                 style={styles.phoneNumber}
               />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <TextInputWithCalendar
                 label="Date Of Birth"
                 value={values.date_of_birth}
@@ -90,13 +118,13 @@ export const TellUsMoreAboutYou = () => {
               <SingleButton
                 mode="contained"
                 children="Continue"
-                loading={isLoading}
+                loading={loading}
                 onPress={handleSubmit}
                 style={styles.button}
               />
               {/* {isError && <Text>{error}</Text>} */}
             </TouchableWithoutFeedback>
-          </>
+          </View>
         )}
       </Formik>
 

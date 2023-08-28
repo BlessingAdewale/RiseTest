@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 // ...
 import theplanReducer from '../features/theplan';
 
@@ -6,12 +6,20 @@ import credentialsReducer from '../features/credentials';
 
 import otpReducer from '../features/otp';
 
+import logInReducer from '../features/logIn';
+
 export const store = configureStore({
   reducer: {
     theplan: theplanReducer,
     credentials: credentialsReducer,
     otp: otpReducer,
+    logIn: logInReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

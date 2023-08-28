@@ -8,8 +8,14 @@ import { layout } from '@utils';
 import { Divider } from 'react-native-paper';
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { fundWalletDataType } from 'constants/model';
+import { useFundWalletHelper } from './useFundWalletHelper';
+import { getRate } from '@hooks';
 
 export const FundWallet = () => {
+  getRate()
+    .then(() => {})
+    .catch(() => {});
+
   // ref
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -23,6 +29,8 @@ export const FundWallet = () => {
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
   }, []);
+
+  const { navigateToChooseFromPlans } = useFundWalletHelper();
 
   const renderItem = React.useCallback(({ item }: fundWalletDataType) => {
     return (
@@ -90,7 +98,7 @@ export const FundWallet = () => {
               conversions at the prevailing parallel rates and are not set, or controlled or by
               Rise. They are subject to change based on market trends.
             </Text>
-            <SingleButton children="Accept & Continue" onPress={() => null} />
+            <SingleButton children="Accept & Continue" onPress={navigateToChooseFromPlans} />
           </View>
         </BottomSheetModal>
       </SafeAreaView>

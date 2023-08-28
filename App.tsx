@@ -14,6 +14,7 @@ import {
 import { store } from '@state';
 
 import { StatusBar } from 'expo-status-bar';
+
 const queryClient = new QueryClient()
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+
      <QueryClientProvider client={queryClient}>
        <ReduxProvider store={store}>
       <PaperProvider>
@@ -33,6 +35,7 @@ function App() {
       </PaperProvider>
       </ReduxProvider>
       </QueryClientProvider>
+
     </>
   );
 }

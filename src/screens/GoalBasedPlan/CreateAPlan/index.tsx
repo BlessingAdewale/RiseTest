@@ -5,8 +5,11 @@ import { layout } from '@utils';
 import React from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Avatar } from 'react-native-paper';
+import { useCreateAPlanHelper } from './useCreateAPlanHelper';
 
 export const CreateAPlan = () => {
+  const { navigateToGoalName } = useCreateAPlanHelper();
+
   return (
     <SafeAreaView style={[globalStyles.container, globalStyles.wrapper]}>
       <AppBar title="Create a plan" icon="close" />
@@ -35,7 +38,12 @@ export const CreateAPlan = () => {
         subTitle="You are in charge. Make changes to your plan, from adding funds, funding source, adding money to your wallet and more."
       />
 
-      <SingleButton mode="contained" children="Continue" style={styles.button} />
+      <SingleButton
+        mode="contained"
+        onPress={navigateToGoalName}
+        children="Continue"
+        style={styles.button}
+      />
     </SafeAreaView>
   );
 };

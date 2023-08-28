@@ -13,8 +13,6 @@ export interface SignUpFormType {
 export interface axiosSignUpFormType {
   first_name: string;
   last_name: string;
-  nick_name: string;
-  phone_number: string;
   date_of_birth: string;
   email_address: string;
   password: string;
@@ -23,8 +21,6 @@ export interface axiosSignUpFormType {
 export interface TellUsMoreAboutFormType {
   first_name: string;
   last_name: string;
-  nick_name: string;
-  phone_number: string;
   date_of_birth: string;
 }
 
@@ -36,6 +32,7 @@ export interface OnboardingDataType {
     subTitle: string;
     backgroundColor: string;
   };
+  index: number;
 }
 
 export interface bankDataType {

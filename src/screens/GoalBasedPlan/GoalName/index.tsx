@@ -2,8 +2,11 @@ import { PlanQuestions, SingleButton, TextInput } from '@components';
 import { layout } from '@utils';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { useGaolNameHelper } from './useGameNameHelper';
 
 export const GoalName = () => {
+  const { navigateToTargetAmount } = useGaolNameHelper();
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF' }}>
       <PlanQuestions
@@ -17,6 +20,7 @@ export const GoalName = () => {
         <SingleButton
           mode="contained"
           children="Continue"
+          onPress={navigateToTargetAmount}
           style={{ marginTop: layout.pixelSizeVertical(26) }}
         />
       </View>

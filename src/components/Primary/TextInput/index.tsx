@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   outline: {
     borderRadius: layout.fontPixel(5),
     borderStyle: 'solid',
+    color: '#110',
   },
   label: {
     // color: '#454545',

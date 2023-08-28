@@ -15,7 +15,7 @@ export const theplanSlice = createSlice({
   initialState,
   reducers: {
     thereisplan: (state) => {
-      state.plan != state.plan;
+      state.plan = !state.plan;
     },
 
     thereisnoplan: (state) => {

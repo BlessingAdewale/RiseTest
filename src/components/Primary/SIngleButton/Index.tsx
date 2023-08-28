@@ -4,12 +4,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button as PaperButton } from 'react-native-paper';
 
-export const SingleButton = ({ mode, style, errorText, setErrorText, ...props }: any) => {
+export const SingleButton = ({ mode, style, errorText, onPress, setErrorText, ...props }: any) => {
   return (
     <PaperButton
       style={[styles.button, style, mode === 'outlined']}
       labelStyle={styles.text}
       mode={mode}
+      onPress={onPress}
       buttonColor={theme.colors.teal1}
       contentStyle={{
         paddingVertical: layout.pixelSizeVertical(8),

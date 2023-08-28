@@ -1,8 +1,6 @@
 import { layout } from '@utils';
 import React, { useState } from 'react';
-import { Keyboard, StyleSheet, Text, View } from 'react-native';
-
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { Keyboard, StyleSheet, TouchableWithoutFeedback, Text, View } from 'react-native';
 
 import {
   CodeField,
@@ -11,27 +9,31 @@ import {
   useClearByFocusCell,
 } from 'react-native-confirmation-code-field';
 import { theme } from '@constants';
-import { Value, newValue, useAppDispatch, useAppSelector } from '@state';
+import { oldValue, newValue, useAppDispatch, useAppSelector } from '@state';
 
 const CELL_COUNT = 6;
 
-export function OTPCode({ firstOtp,  value, setValue }: any) {
-
-
+export function OTPCode({ firstOtp, value, setValue }: any) {
   const dispatch = useAppDispatch();
-{
-  firstOtp?   dispatch(Value(value)) :  dispatch(newValue(value))
-}
 
- 
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
+
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
     setValue,
   });
 
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      {
+        firstOtp ? dispatch(oldValue(value)) : dispatch(newValue(value));
+      }
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [value, setValue]);
+
   return (
-    <TouchableWithoutFeedback  onPress={() => Keyboard.dismiss()}>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <CodeField
         ref={ref}
         {...props}

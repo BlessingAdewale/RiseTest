@@ -1,6 +1,7 @@
 import { AppBar } from '@components';
 import { bankData, theme } from '@constants';
 import { globalStyles } from '@globalStyles';
+import { getBank } from '@hooks';
 import { layout } from '@utils';
 import { bankDataType } from 'constants/model';
 import React from 'react';
@@ -8,6 +9,10 @@ import { View, Text, SafeAreaView, FlatList, TouchableOpacity, StyleSheet } from
 import { Divider } from 'react-native-paper';
 
 export const SelectBank = () => {
+  getBank()
+    .then((result) => {})
+    .catch((err) => {});
+
   const renderItem = React.useCallback(({ item }: bankDataType) => {
     return (
       <TouchableOpacity style={styles.container}>

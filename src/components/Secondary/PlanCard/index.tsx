@@ -2,13 +2,21 @@ import { Card } from '../../Primary/Card';
 import { planData } from '@constants';
 import { layout } from '@utils';
 import React from 'react';
-import { StyleSheet, FlatList, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, FlatList, Text, View, ImageBackground, TouchableOpacity } from 'react-native';
 import PlusSign from '@assets/svg/plussign.svg';
 import { AntDesign } from '@expo/vector-icons';
 import { globalStyles } from '@globalStyles';
 import { useAppDispatch, useAppSelector } from '@state';
 
-export const PlanCard = ({ ShowFirstIndex }: { ShowFirstIndex: boolean }) => {
+export const PlanCard = ({
+  ShowFirstIndex,
+  onPress,
+  onPress2,
+}: {
+  ShowFirstIndex: boolean;
+  onPress: () => void;
+  onPress2: () => void;
+}) => {
   const { plan } = useAppSelector((state) => state.theplan);
 
   const renderItem = React.useCallback(({ item, index }: any) => {
@@ -17,6 +25,7 @@ export const PlanCard = ({ ShowFirstIndex }: { ShowFirstIndex: boolean }) => {
         {index === 0
           ? ShowFirstIndex && (
               <Card
+                onPress={onPress}
                 viewStyle={styles.defaultCard}
                 children={
                   <View>
@@ -33,6 +42,7 @@ export const PlanCard = ({ ShowFirstIndex }: { ShowFirstIndex: boolean }) => {
             )
           : plan && (
               <Card
+                onPress={onPress2}
                 viewStyle={styles.container}
                 children={
                   <ImageBackground source={item.image} resizeMode="cover" style={styles.image}>
@@ -70,7 +80,7 @@ export const PlanCard = ({ ShowFirstIndex }: { ShowFirstIndex: boolean }) => {
   }, []);
 
   return (
-    <View>
+    <TouchableOpacity>
       <FlatList
         data={planData.data}
         renderItem={renderItem}
@@ -78,7 +88,7 @@ export const PlanCard = ({ ShowFirstIndex }: { ShowFirstIndex: boolean }) => {
         horizontal
         showsHorizontalScrollIndicator={false}
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 

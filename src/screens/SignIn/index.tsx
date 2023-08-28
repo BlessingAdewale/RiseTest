@@ -1,24 +1,49 @@
 import { SignUpHeader, SingleButton, TextInput, TextInputWithPassword } from '@components';
 import { globalStyles } from '@globalStyles';
 import React from 'react';
-import { View, Text, SafeAreaView, Keyboard, StyleSheet, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  SafeAreaView,
+  Keyboard,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 import { Formik } from 'formik';
 import { theme, useSchemaHelper } from '@constants';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+// import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { layout } from '@utils';
 import { LoginFormType } from 'constants/model';
-import { useLoginUserData } from '@hooks';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { SignInNavigationProp } from 'navigation/types';
+import { useNavigation } from '@react-navigation/native';
+import { loginUser } from '@hooks';
 
 export const SignIn = () => {
-  const { mutate, isLoading, isSuccess, isError, error } = useLoginUserData();
+  const [loading, setLoading] = React.useState(false);
 
-  //  const { passwordValidationSchema } = useSchemaHelper()
+  const navigation = useNavigation<SignInNavigationProp>();
+
   const SubmitForm = (values: LoginFormType) => {
-    const loginData = { ...values };
-    mutate(loginData);
+    values.email_address = values.email_address.toLowerCase();
+    setLoading(true);
+    loginUser({ ...values })
+      .then((result) => {
+        console.log(result.data);
+        setLoading(false);
+        if (result?.status == 200) {
+          navigation.replace('CreatePin');
+          AsyncStorage.setItem('token', result.data.token);
+        }
+        if (result?.status == 'undefined') {
+          Alert.alert('Erorr Message', result.data.message);
+          setLoading(false);
+        }
+      })
+      .catch((err) => setLoading(false));
   };
-
-  // { isSuccess &&    }
 
   return (
     <SafeAreaView style={[globalStyles.container, globalStyles.wrapper]}>
@@ -32,40 +57,36 @@ export const SignIn = () => {
         onSubmit={(values) => SubmitForm(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, isValid, values, errors, touched }) => (
-          <>
-            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()} style={styles.textInput}>
+          <View style={styles.textInput}>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <TextInput
                 label="Email Address"
                 value={values.email_address}
                 keyboardType="email-address"
                 onChangeText={handleChange('email_address')}
-                onBlur={handleBlur('email')}
+                onBlur={handleBlur('email_address')}
                 errorText={errors.email_address}
               />
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <TextInputWithPassword
                 label="Password"
+                value={values.password}
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
-                value={values.password}
                 style={styles.passwordTextinput}
               />
             </TouchableWithoutFeedback>
 
-            <TouchableWithoutFeedback onPress={() => null}>
-              <SingleButton
-                mode="contained"
-                children="Sign In"
-                loading={isLoading}
-                disabled={!isValid}
-                onPress={handleSubmit}
-                style={styles.button}
-              />
-
-              {/* {isError && <>
-              <Text> {error} </Text>
-              </>     } */}
-            </TouchableWithoutFeedback>
-          </>
+            <SingleButton
+              mode="contained"
+              children="Sign In"
+              loading={loading}
+              disabled={!isValid}
+              onPress={handleSubmit}
+              style={styles.button}
+            />
+          </View>
         )}
       </Formik>
 

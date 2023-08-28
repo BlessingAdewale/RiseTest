@@ -3,31 +3,31 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../store';
 
 interface OTPState {
-  value: string;
-  newValue: string
+  oldValue: string;
+  newValue: string;
 }
 
 const initialState = {
-  value: '',
-  newValue: ''
+  oldValue: '',
+  newValue: '',
 } as OTPState;
 
 export const otpSlice = createSlice({
   name: 'otp',
   initialState,
   reducers: {
-    Value: (state, action: PayloadAction<string>) => {
-      state.value = action.payload;
+    oldValue: (state, action: PayloadAction<string>) => {
+      state.oldValue = action.payload;
     },
     newValue: (state, action: PayloadAction<string>) => {
-      state.newValue = state.value;
+      state.newValue = action.payload;
     },
-   
   },
 });
 
-export const { Value, newValue } = otpSlice.actions;
+export const { oldValue, newValue } = otpSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectValue = (state: RootState) => state.otp.value;
+export const selectOldValue = (state: RootState) => state.otp.oldValue;
+export const selectNewValue = (state: RootState) => state.otp.newValue;
 export default otpSlice.reducer;

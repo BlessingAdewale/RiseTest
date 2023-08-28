@@ -7,9 +7,9 @@ import { TextInput as Input } from 'react-native-paper';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 
 export const TextInputWithCalendar = ({ ...props }: any) => {
-  const renderCalendar = () => {
-    const [date, setDate] = useState('');
+  const [date, setDate] = useState('');
 
+  const renderCalendar = () => {
     return (
       <Calendar
         onDayPress={(day) => {
@@ -45,7 +45,14 @@ export const TextInputWithCalendar = ({ ...props }: any) => {
             isTextInputFocused ? theme.colors.teal1 : '#7A7A7A'
           }
           style={{ marginTop: layout.pixelSizeVertical(12) }}
-          onPress={renderCalendar}
+          onPress={() => (
+            <Calendar
+              onDayPress={(day) => {
+                setDate(day.dateString);
+              }}
+              style={styles.calendarContainer}
+            />
+          )}
         />
       }
       {...props}

@@ -1,5 +1,6 @@
 import { globalStyles } from '@globalStyles';
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import {
   FlatList,
   SafeAreaView,
@@ -13,7 +14,7 @@ import { styles } from './styles';
 import { AccountBalanceSlide, Card, PlanCard, TextButton } from '@components';
 import NotificationBell from '@assets/svg/notification.svg';
 import { layout } from '@utils';
-import { Badge } from 'react-native-paper';
+import { ActivityIndicator, Badge } from 'react-native-paper';
 import { theme } from '@constants';
 import UncolouredArrow from '@assets/svg/smallrightarrow.svg';
 import ColouredArrow from '@assets/svg/colouredsmallrightarrow.svg';
@@ -23,8 +24,36 @@ import ShareLogo from '@assets/svg/share.svg';
 import RiseLogo from '@assets/svg/riselogo.svg';
 import { useAppDispatch, useAppSelector } from '@state';
 
+import { useHomeHelper } from './useHomeHelper';
+import { getQoute, getSession } from '@hooks';
+
 export const Home = () => {
   const { plan } = useAppSelector((state) => state.theplan);
+  const { navigateToCreateAPlan } = useHomeHelper();
+
+  const [data, setData] = React.useState();
+  const [qoute, setQoute] = React.useState();
+  const [loading, setLoading] = React.useState(false);
+
+  getSession()
+    .then((result) => {
+      setLoading(true);
+      console.log(result);
+      if (result?.status == 200) {
+        setData(result.data);
+      }
+      setLoading(false);
+    })
+    .catch((err) => console.log(err));
+
+  getQoute().then((result) => {
+    setLoading(true);
+    console.log(result);
+    if (result?.status == 200) {
+      setQoute(result.data);
+    }
+    setLoading(false);
+  });
 
   const tabBarHeight = useBottomTabBarHeight();
 
@@ -82,7 +111,11 @@ export const Home = () => {
             </TouchableOpacity>
           </View>
         </View>
-
+        {loading && (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <ActivityIndicator animating={true} size={45} color={theme.colors.primary} />
+          </View>
+        )}
         <AccountBalanceSlide />
         <TextButton
           mode="outlined"
@@ -121,9 +154,11 @@ export const Home = () => {
           {' '}
           {plan ? null : 'Start your investment journey by creating a plan'}{' '}
         </Text>
+
         <View style={{ flexDirection: 'row' }}>
-          <PlanCard ShowFirstIndex={true} />
+          <PlanCard onPress={navigateToCreateAPlan} onPress2={() => null} ShowFirstIndex={true} />
         </View>
+
         <Card
           disabled={true}
           // viewStyle={styles.shadowCard}

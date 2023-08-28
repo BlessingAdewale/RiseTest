@@ -6,8 +6,16 @@ import { Divider } from 'react-native-paper';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Information from '@assets/svg/information.svg';
+import { useReviewHelper } from './useReviewHelper';
+import { createPlan } from '@hooks';
 
 export const Review = () => {
+  const { navigateToCreateAPlan, navigateToDoneCreatingPlan } = useReviewHelper();
+
+  createPlan({})
+    .then(() => {})
+    .catch((err) => {});
+
   return (
     <SafeAreaView style={[globalStyles.container, globalStyles.wrapper]}>
       <AppBar title="Review" icon="arrow-left" />
@@ -49,8 +57,8 @@ export const Review = () => {
         These are your starting settings, they can always be updated.
       </Text>
       <DoubleButton
-        onPress1={() => null}
-        onPress2={() => null}
+        onPress1={navigateToDoneCreatingPlan}
+        onPress2={navigateToCreateAPlan}
         style={styles.doubleButton}
         children1="Agree & Continue"
         children2="Start over"

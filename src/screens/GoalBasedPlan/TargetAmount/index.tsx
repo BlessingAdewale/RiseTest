@@ -2,8 +2,10 @@ import { PlanQuestions, SingleButton, TextInput } from '@components';
 import { layout } from '@utils';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { useTargetAmountHelper } from './useTargetAmountHelper';
 
 export const TargetAmount = () => {
+  const { navigateToTargetDate } = useTargetAmountHelper();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FFF' }}>
       <PlanQuestions
@@ -17,6 +19,7 @@ export const TargetAmount = () => {
         <SingleButton
           mode="contained"
           children="Continue"
+          onPress={navigateToTargetDate}
           style={{ marginTop: layout.pixelSizeVertical(26) }}
         />
       </View>
