@@ -46,12 +46,12 @@ It is created as a test app for Rise recruitment purposes. Below is the <a href=
 The design is segregated into six categories which are essential parts of Rise mobile app which is available for their customers on both Playstore and AppStore.
 
  The Categories are:
--  <h1>Sign Up</h1>
--   <h1>Sign In</h1>
--   <h1>Set Pin</h1>
--   <h1>Homepage</h1>
--    <h1>Goal Based Plan</h1>
--     <h1>Fund Plan From Home</h1>
+-  Sign Up
+-   Sign In
+-   Set Pin
+-   Homepage
+-    Goal Based Plan
+-     Fund Plan From Home
 
 
 The above catgeories are created inside the repository respectively for easy flow.
