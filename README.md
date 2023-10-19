@@ -1,16 +1,24 @@
 <h1>Note: The app is tested only with Android Emulator</h1>
+
 <!-- 
 ![Screenshot](docs/images/Screenshot_1697713410.png) -->
+<!-- 
+![Screenshot](docs/images/Screenshot_1697713565.png) -->
+<!-- ![Screenshot](docs/images/Screenshot_1697715690.png) -->
+
+
+<p align="center">
+
 
 <img src="docs/images/Screenshot_1.png"  width="30%" 
      height="auto"  alt="Screenshot 1"/>
-<!-- 
-![Screenshot](docs/images/Screenshot_1697713565.png) -->
+
 
 <img src="docs/images/Screenshot_2.png" width="30%"  height="auto"  alt="Screenshot 2"   />
-<!-- ![Screenshot](docs/images/Screenshot_1697715690.png) -->
+
 <img src="docs/images/Screenshot_3.png"  width="30%" 
      height="auto" alt="Screenshot 3" />
+</p>
 
 
 # RiseTest
