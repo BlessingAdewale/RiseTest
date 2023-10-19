@@ -1,7 +1,7 @@
 # RiseTest
 This reactnative repository is created with the following packages:
 
-- Node.js >> 
+- Node.js >> 12.2.1
 -  Expo Cli >> 49.0.7
 -   Eslint >> 8.47.0
 -   Prettier >> 3.0.2
@@ -57,4 +57,6 @@ The design is segregated into six categories which are essential parts of Rise m
 The above catgeories are created inside the repository respectively for easy flow.
 
 Each categories has its own screens which are all listed in the folders.
+
+
 
