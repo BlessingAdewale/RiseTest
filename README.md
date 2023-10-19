@@ -1,10 +1,11 @@
 <h1>Note: The app is tested only with Android Emulator</h1>
 
-Screenshot_1697713410.png
+![Screenshot](docs/images/Screenshot_1697713410.png)
 
-Screenshot_1697713557.png
+![Screenshot](docs/images/Screenshot_1697713565.png)
 
-Screenshot_1697715690.png
+![Screenshot](docs/images/Screenshot_1697715690.png)
+
 
 # RiseTest
 This reactnative repository is created with the following packages:
