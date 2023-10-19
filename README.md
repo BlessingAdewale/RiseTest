@@ -47,11 +47,11 @@ The design is segregated into six categories which are essential parts of Rise m
 
  The Categories are:
 -  Sign Up
--   Sign In
--   Set Pin
--   Homepage
--    Goal Based Plan
--     Fund Plan From Home
+-  Sign In
+-  Set Pin
+-  Homepage
+-  Goal Based Plan
+-  Fund Plan From Home
 
 
 The above catgeories are created inside the repository respectively for easy flow.
