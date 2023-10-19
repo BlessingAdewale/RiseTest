@@ -2,7 +2,7 @@
 <!-- 
 ![Screenshot](docs/images/Screenshot_1697713410.png) -->
 
-<img src="docs/images/Screenshot_1697713410.png"  width="100" 
+<img src="docs/images/Screenshot_1697713412.png"  width="100" 
      height="auto"  alt="Screenshot 1"/>
 <!-- 
 ![Screenshot](docs/images/Screenshot_1697713565.png) -->
