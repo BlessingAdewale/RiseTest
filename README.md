@@ -6,11 +6,11 @@
 <!-- 
 ![Screenshot](docs/images/Screenshot_1697713565.png) -->
 
-<img src="docs/images/Screenshot_1697713565" width="50"/>
+<!-- <img src="docs/images/Screenshot_1697713565" width="100"/> -->
 
 <!-- ![Screenshot](docs/images/Screenshot_1697715690.png) -->
 
-<img src="docs/images/Screenshot_1697715690" width="50"/>
+<img src="docs/images/Screenshot_1697715690" width="100"/>
 
 
 # RiseTest
