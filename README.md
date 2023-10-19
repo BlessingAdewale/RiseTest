@@ -2,15 +2,15 @@
 <!-- 
 ![Screenshot](docs/images/Screenshot_1697713410.png) -->
 
-<img src="docs/images/Screenshot_1697713410.png" width="100"/>
+<img src="docs/images/Screenshot_1697713410.png" width="100" alt="Screenshot 1"/>
 <!-- 
 ![Screenshot](docs/images/Screenshot_1697713565.png) -->
 
-<!-- <img src="docs/images/Screenshot_1697713565" width="100"/> -->
+<img src="docs/images/Screenshot_1697713565"  alt="Screenshot 2"   />
 
 <!-- ![Screenshot](docs/images/Screenshot_1697715690.png) -->
 
-<img src="docs/images/Screenshot_1697715690" width="100"/>
+<img src="docs/images/Screenshot_1697715690" width="100" alt="Screenshot 3" />
 
 
 # RiseTest
