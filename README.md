@@ -1,7 +1,9 @@
+<h1>Note: The app is tested only with Android Emulator</h1>
+
 # RiseTest
 This reactnative repository is created with the following packages:
 
-- Node.js >> 12.2.1
+- Node.js >> 18.2.1
 -  Expo Cli >> 49.0.7
 -   Eslint >> 8.47.0
 -   Prettier >> 3.0.2
